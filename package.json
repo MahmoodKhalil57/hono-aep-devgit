@@ -1,0 +1,23 @@
+{
+  "name": "hono-aep-devgit",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Edit a deployed static site from its own browser tab: freeze the page, mutate the DOM (by hand, DevTools, or a browser agent), review the line diff, commit straight to GitHub. Dependency-free ES modules, no build step, no server.",
+  "main": "src/devgit.js",
+  "exports": {
+    ".": "./src/devgit.js",
+    "./github.js": "./src/devgit-github.js",
+    "./diff.js": "./src/devgit-diff.js",
+    "./files.js": "./src/devgit-files.js"
+  },
+  "files": ["src", "README.md"],
+  "keywords": ["github-pages", "static-site", "no-build", "contenteditable", "git", "cms", "browser"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MahmoodKhalil57/hono-aep-devgit.git"
+  },
+  "scripts": {
+    "test": "bun test"
+  }
+}
