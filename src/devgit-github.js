@@ -59,7 +59,15 @@ const fromBase64 = (b64) =>
   new TextDecoder().decode(Uint8Array.from(atob(b64.replaceAll("\n", "")), (c) => c.charCodeAt(0)));
 
 // The site is flat, so this page's file is the last path segment.
-export const pageFile = () => decodeURIComponent(location.pathname.split("/").pop() || "index.html");
+// Clean URLs (/products serving products.html) are the norm on GitHub
+// Pages, so the address bar rarely carries the file name. Map back to the
+// file we must commit to: no extension means <name>.html, and a trailing
+// slash means index.html.
+export const pageFile = () => {
+  const last = decodeURIComponent(location.pathname.split("/").pop() ?? "");
+  if (!last) return "index.html";
+  return last.includes(".") ? last : `${last}.html`;
+};
 
 // Where an edit lands: the source branch (under sourceDir/) and — when
 // configured — the deploy branch, whose root IS the GitHub Pages site root,

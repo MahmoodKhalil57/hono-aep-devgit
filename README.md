@@ -63,6 +63,13 @@ const { text } = await devgit.readFile("css/site.css");
 await devgit.writeFile("css/site.css", text + "\n/* hi */", "tweak");
 ```
 
+## Clean URLs
+
+Sites that serve `/products` for `products.html` (GitHub Pages does this
+by default) never show the file name in the address bar. devgit maps back
+to the file it must commit: an extensionless path becomes `<name>.html`,
+a trailing slash becomes `index.html`.
+
 ## Security
 
 The token lives in **this browser's** localStorage and is sent only to
